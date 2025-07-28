@@ -1,5 +1,6 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
+        //nishant
         String prefix = "";
         for (int i = 0; i < strs[0].length(); i++) {
             char c = strs[0].charAt(i);
