@@ -1,26 +1,26 @@
 class Solution {
     public int thirdMax(int[] nums) {
+        long first = Long.MIN_VALUE;
+        long second = Long.MIN_VALUE;
+        long third = Long.MIN_VALUE;
 
-        int min = 0;
-
-        Arrays.sort(nums);
-
-        int k = 1;
-
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] != nums[i - 1]) {
-                nums[k++] = nums[i];
+        for (int n : nums) {
+            if (n == first || n == second || n == third) {
+                continue;
+            }
+            if (n > first) {
+                third = second;
+                second = first;
+                first = n;
+            } else if (n > second) {
+                third = second;
+                second = n;
+            } else if (n > third) {
+                third = n;
             }
         }
 
-        int[] result = Arrays.copyOf(nums, k);
+        return third == Long.MIN_VALUE ? (int)first : (int)third;
 
-        if(result.length >= 3){
-            min =  result[result.length - 3];
-        }else if (result.length < 3){
-        min =  result[result.length -1];
-        }
-
-        return min;
     }
 }
