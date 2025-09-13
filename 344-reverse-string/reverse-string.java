@@ -9,6 +9,6 @@ class Solution {
             i++;
             j--;
         }
-        System.out.println(s);
+        
     }
 }
