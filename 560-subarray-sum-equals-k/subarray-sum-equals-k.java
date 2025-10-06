@@ -7,6 +7,10 @@ public class Solution {
         for (int i = 1; i <= nums.length; i++)
             sum[i] = sum[i - 1] + nums[i - 1];
       
+
+       for(int e:sum){
+        System.out.print(e+" ");
+       }
         for (int i = 0; i < sum.length; i++) {
             for (int j = i + 1; j < sum.length; j++) {
                 if (sum[j] - sum[i] == k)
