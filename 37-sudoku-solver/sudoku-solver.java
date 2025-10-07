@@ -1,12 +1,13 @@
 class Solution {
     public void solveSudoku(char[][] board) {
-        solve(board, 0,0);
-        return ;
+        char[][] ans = solve(board,0,0);
+        if(ans != null){
+            copy(ans,board);
+        }
     }
-    public static boolean solve(char[][] board, int row, int col){
+    public static char[][] solve(char[][] board, int row, int col){
         if(row == 9){
-            print(board);
-            return true;
+            return board;
         }
 
         int rowNext = row, colNext = col+1;
@@ -22,13 +23,13 @@ class Solution {
         for(char digit = '1' ; digit <= '9' ; digit++){
             if(isSafe(board, row, col, digit)){
                 board[row][col] = digit;
-                if(solve(board, rowNext, colNext)){
-                    return true;
+                if(solve(board, rowNext, colNext) != null){
+                    return solve(board, rowNext, colNext);
                 }
                 board[row][col] = '.';
             }
         }
-        return false;
+        return null;
     }
 
     public static boolean isSafe(char[][]board, int row, int col, int digit){
@@ -60,12 +61,11 @@ class Solution {
         return true;
     }
 
-    public static void print(char[][] board){
+    public static void copy(char[][] from, char[][]to){
         for(int i = 0 ; i < 9 ; i++){
             for(int j = 0 ; j < 9 ; j++){
-                System.out.print(board[i][j]+",");
+                to[i][j] = from[i][j];
             }
-            System.out.println();
         }
     }
 }
