@@ -1,3 +1,5 @@
+//- Use recursion + memoization (Top-Down Dynamic Programming) to compute the length of the Longest Common Subsequence (LCS).
+
 class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
         int n = text1.length();
